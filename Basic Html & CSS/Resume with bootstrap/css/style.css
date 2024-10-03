@@ -1,0 +1,84 @@
+
+
+.custom-hr {
+  margin: 5px ;
+  height: 4px;
+  background-color: rgb(248, 140, 128);
+  opacity: 1;
+  border: none;
+  border-radius: 2px;
+}
+
+
+/* Small screens (sm) */
+@media (max-width: 576px) {
+  .h-sm-2 {
+    font-size: 2rem; /* Adjusts to h2 size on small screens */
+  }
+}
+
+/* Large screens (lg) */
+@media (min-width: 992px) {
+  .h-lg-3 {
+    font-size: 1.75rem; /* Adjusts to h3 size on large screens */
+  }
+}
+
+
+
+/* Fonts */
+
+/* Bold font */
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 700;
+  font-style: normal;
+  src: url('../fonts/Kanit/Kanit-ExtraBold.ttf') format('truetype');
+}
+
+.kanit-extrabold {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+}
+
+/* Semi-bold font */
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 600;
+  font-style: normal;
+  src: url('../fonts/Kanit/Kanit-SemiBold.ttf') format('truetype');
+}
+
+.kanit-semibold {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 600;
+}
+
+/* Italic font */
+@font-face {
+  font-family: 'Kanit';
+  font-weight: 700;
+  font-style: italic;
+  src: url('../fonts/Kanit/Kanit-ExtraBoldItalic.ttf') format('truetype');
+}
+
+.kanit-extrabold-italic {
+  font-family: 'Kanit', sans-serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.orange-text {
+  color: rgb(248,140,128);
+}
+
+
+
+.sub-head{
+  color: rgb(248, 140, 128);
+}
+
+
+p {
+  font-size: 16px;
+}
