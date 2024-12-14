@@ -1,18 +1,19 @@
 <?php
 session_start();
-include '../php/connection.php';
+require_once '../php/connection.php'; // Your DB connection file
 require_once 'function.php';
-
+ 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $login_message = "";
     // Check if login form was submitted
     if (isset($_POST['login'])) {
         $username = $_POST['username'];
         $password = $_POST['password'];
-        $stay_signed_in = isset($_POST['stay_signed_in']);
 
         // Check if username exists
         $user_data = check_username_exists($username, $conn);
+
+        
 
         if ($user_data) {
             // Username exists, now verify password
@@ -21,13 +22,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['user_id'] = $user_data['ua_id'];
                 $_SESSION['username'] = $user_data['username'];
                 $_SESSION['user_priv'] = $user_data['user_priv'];  // Store user privilege level
-
-                if ($stay_signed_in) {
-                    setcookie('user_id', $user_data['ua_id'], time() + (86400 * 30), "/"); // 30 days
-                    setcookie('username', $user_data['username'], time() + (86400 * 30), "/"); // 30 days
-                    setcookie('user_priv', $user_data['user_priv'], time() + (86400 * 30), "/"); // 30 days
-                }
-
+ 
                 // Redirect based on user privilege
                 if ($_SESSION['user_priv'] == 'a') {
                     // Redirect to the admin dashboard if user is an admin
@@ -46,22 +41,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if (isset($_COOKIE['user_id']) && isset($_COOKIE['username']) && isset($_COOKIE['user_priv'])) {
-    $_SESSION['user_id'] = $_COOKIE['user_id'];
-    $_SESSION['username'] = $_COOKIE['username'];
-    $_SESSION['user_priv'] = $_COOKIE['user_priv'];
-
-    // Redirect based on user privilege
-    if ($_SESSION['user_priv'] == 'a') {
-        // Redirect to the admin dashboard if user is an admin
-        header("Location: ../admin/admin.php");
-    } else {
-        // Redirect to the regular user page if user is not an admin
-        header("Location: ../php/index.php");
-    }
-    exit();
-}
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -90,12 +71,14 @@ if (isset($_COOKIE['user_id']) && isset($_COOKIE['username']) && isset($_COOKIE[
         <div class="login-left">
             <h2>Log in</h2>
 
-            <!-- Display the login message here-->
-            <?php if (!empty($login_message)): ?>
-                <div class="alert alert-info">
-                    <?php echo $login_message; ?>
+                <!-- Display the login message here-->
+                <?php if (!empty($login_message)): ?>
+                    <div class="alert alert-info">
+                        <?php echo $login_message; ?>
                 </div>
-            <?php endif; ?>
+                <?php endif; ?>
+
+                
 
             <form action="login.php" method="POST">
                 <div class="mb-3 position-relative">
@@ -108,8 +91,8 @@ if (isset($_COOKIE['user_id']) && isset($_COOKIE['username']) && isset($_COOKIE[
                     <i id="togglePassword" class="fa-solid fa-eye password-toggle"></i>
                 </div>
                 <div class="form-check text-start">
-                    <input type="checkbox" class="form-check-input" id="stay_signed_in" name="stay_signed_in">
-                    <label class="form-check-label" for="stay_signed_in">Stay signed in</label>
+                    <input type="checkbox" class="form-check-input" id="staySignedIn">
+                    <label class="form-check-label" for="staySignedIn">Stay signed in</label>
                 </div>
                 <button type="submit" class="btn btn-primary" name="login">Log In</button>
             </form>

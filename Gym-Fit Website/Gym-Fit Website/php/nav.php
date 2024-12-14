@@ -66,10 +66,13 @@ require_once 'connection.php';
 <?php }?>
 </div>
         </div>
-        <div class="search-bar">
-          <input type="text" placeholder="Search Products" />
-          <i class="fas fa-search"></i>
-        </div>
+        <form action="shop.php" method="GET" class="search-bar">
+  <input type="text" name="search" placeholder="Search Products" />
+  <button type="submit">
+    <i class="fas fa-search"></i>
+  </button>
+</form>
+
         <div class="user-cart-icons">
         <div class="dropdown">
   <i class="fas fa-user dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
@@ -88,7 +91,7 @@ require_once 'connection.php';
     $row_count = 0; // Initialize the variable
     if(isset($_SESSION['user_id'])) {
         $user_id = $_SESSION['user_id'];
-        $select_rows = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
+        $select_rows = mysqli_query($conn, "SELECT * FROM cart WHERE user_id = '$user_id'") or die('query failed');
         $row_count = mysqli_num_rows($select_rows);
     } else {
         echo "Login first!😸";

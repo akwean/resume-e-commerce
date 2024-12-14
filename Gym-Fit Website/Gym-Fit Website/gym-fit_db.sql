@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 09, 2024 at 05:06 PM
+-- Generation Time: Dec 14, 2024 at 05:05 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -28,11 +28,21 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `cart` (
-  `cart_id` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `item_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
-  `ip_address` varchar(45) NOT NULL
+  `price` decimal(7,2) NOT NULL,
+  `product_image` varchar(255) NOT NULL,
+  `quantity` int(255) NOT NULL,
+  `item_name` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `cart`
+--
+
+INSERT INTO `cart` (`id`, `item_id`, `user_id`, `price`, `product_image`, `quantity`, `item_name`) VALUES
+(114, 0, 24, 1000.00, '../product_img/20.png', 1, 'Gym Shoes');
 
 -- --------------------------------------------------------
 
@@ -88,7 +98,11 @@ CREATE TABLE `customer_profile` (
 INSERT INTO `customer_profile` (`cus_id`, `name`, `gender`, `ua_id`) VALUES
 (16, 'Non, Christian Jeric', 'M', 22),
 (17, 'Charls Emil Barquin', 'F', 23),
-(18, 'Rod B. Rañola', 'M', 24);
+(18, 'Rod B. Rañola', 'M', 24),
+(19, 'ddd', 'M', 25),
+(20, 'aaa', 'M', 26),
+(21, 'Charls Emil Barquin', 'M', 27),
+(22, 'sampulu', 'O', 28);
 
 -- --------------------------------------------------------
 
@@ -132,27 +146,25 @@ CREATE TABLE `items` (
 --
 
 INSERT INTO `items` (`item_id`, `item_name`, `item_desc`, `item_price`, `product_image`, `time_added`, `stock`, `category_id`) VALUES
-(1, 'Standard Cast Iron Dumbbells', 'These traditional dumbbells are made from solid cast iron and come in various fixed weights. They are durable and perfect for general strength training.', 800.00, '../product_img/1.jpg\r\n', '2024-12-09 12:38:01', 0, 2),
-(2, 'Kettlebells', 'A versatile weight for strength training, endurance, and flexibility, suitable for full-body workouts.', 1000.00, '../product_img/2.jpg', '2024-12-09 12:38:01', 0, 2),
-(3, 'Yoga Mat', 'A cushioned surface for yoga, stretching, and floor exercises, providing grip and comfort.', 500.00, '../product_img/3.jpg', '2024-12-09 12:38:01', 0, 2),
-(4, 'Resistance Bands', 'Versatile bands for strength training, stretching, and rehabilitation exercises, available in various resistance levels.', 500.00, '../product_img/4.jpg', '2024-12-09 12:38:01', 0, 2),
-(5, 'Treadmill', 'A popular cardio machine for walking, jogging, or running indoors.', 9000.00, '../product_img/5.jpg', '2024-12-09 12:38:01', 0, 2),
-(6, 'Fitness Ball', 'A large inflatable ball used for core strengthening, stability exercises, and rehabilitation.', 300.00, '../product_img/6.jpg', '2024-12-09 12:38:01', 0, 2),
-(7, 'Cable Machine', 'A multi-functional machine with adjustable cables for various strength training exercises.', 9500.00, '../product_img/7.jpg', '2024-12-09 12:38:01', 0, 2),
-(8, 'Whey Protein Powder', 'A high-quality protein source derived from milk, ideal for muscle recovery and growth after workouts.', 1500.00, '../product_img/8.jpg', '2024-12-09 12:38:01', 0, 3),
-(9, 'Leg Press Machine', 'A strength training machine that targets the legs, allowing for controlled leg presses.', 8500.00, '../product_img/9.jpg', '2024-12-09 12:38:01', 0, 2),
-(10, ' Standard Barbell', 'A straight, solid metal bar used for basic weightlifting exercises like squats, bench presses, and deadlifts. ', 1500.00, '../product_img/10.jpg', '2024-12-09 12:38:01', -7, 2),
-(24, 'Jump Rope', 'For Rope Jumping. Very Good. Very nice', 50.00, '../product_img/11.png', '2024-12-09 12:38:01', 0, 2),
-(25, 'Resistance Band', 'Good for yoga. Great Condition. Pati scoliosis mo kaya mapa straight', 50.00, '../product_img/12.png', '2024-12-09 12:38:01', -5, 2),
-(26, 'Resistance band', 'A variation of resistance band that can target chest and back more specifically ', 100.00, '../product_img/13.png', '2024-12-09 12:38:01', 0, 2),
-(27, 'Yoga Mat', 'Mat for yoga obviously.', 150.00, '../product_img/14.png', '2024-12-09 12:38:01', 0, 2),
-(28, 'Earpods pro+', 'Apple earpods pro + with 1000 year waranty kahit patay kana pwede mo paring isauli samin.', 1000.00, '../product_img/15.png', '2024-12-09 12:38:01', 0, 1),
-(29, 'Watter Flask', 'Would you care for some Bo-oh of wo-oh', 200.00, '../product_img/16.png', '2024-12-09 12:38:01', 0, 2),
-(30, 'Yoga Ball', 'Ball for yoga of course. pwede mong i tapon sa petpeve mo HAHAHAHA', 500.00, '../product_img/17.png', '2024-12-09 12:38:01', 0, 2),
-(31, 'Metal Plates', 'Plates made of metal. ito itapon mo sa petepeve mo wag na yung yoga ball', 500.00, '../product_img/18.png', '2024-12-09 12:38:01', 0, 2),
-(32, 'Smart Watch', 'Mas smart pa sayo', 250.00, '../product_img/19.png', '2024-12-09 12:38:01', 0, 1),
-(33, 'Gym Shoes', 'Shoes for gym not for you', 1000.00, '../product_img/20.png', '2024-12-09 12:38:01', 0, 4),
-(53, 'Suit', 'Suit TV series', 123.00, '../product_img/Screenshot (21).png', '2024-12-09 13:45:23', 321, 4);
+(1, 'Standard Cast Iron Dumbbells', 'These traditional dumbbells are made from solid cast iron and come in various fixed weights. They are durable and perfect for general strength training.', 800.00, '../product_img/1.jpg\r\n', '2024-12-14 09:12:56', 99, 2),
+(2, 'Kettlebells', 'A versatile weight for strength training, endurance, and flexibility, suitable for full-body workouts.', 1000.00, '../product_img/2.jpg', '2024-12-14 15:47:04', 98, 2),
+(3, 'Yoga Mat', 'A cushioned surface for yoga, stretching, and floor exercises, providing grip and comfort.', 500.00, '../product_img/3.jpg', '2024-12-14 08:49:50', 96, 2),
+(4, 'Resistance Bands', 'Versatile bands for strength training, stretching, and rehabilitation exercises, available in various resistance levels.', 500.00, '../product_img/4.jpg', '2024-12-14 02:21:20', 100, 2),
+(5, 'Treadmill', 'A popular cardio machine for walking, jogging, or running indoors.', 9000.00, '../product_img/5.jpg', '2024-12-14 02:21:20', 100, 2),
+(6, 'Fitness Ball', 'A large inflatable ball used for core strengthening, stability exercises, and rehabilitation.', 300.00, '../product_img/6.jpg', '2024-12-14 15:11:18', 98, 2),
+(7, 'Cable Machine', 'A multi-functional machine with adjustable cables for various strength training exercises.', 9500.00, '../product_img/7.jpg', '2024-12-14 14:53:39', 96, 2),
+(8, 'Whey Protein Powder', 'A high-quality protein source derived from milk, ideal for muscle recovery and growth after workouts.', 1500.00, '../product_img/8.jpg', '2024-12-14 03:52:57', 99, 3),
+(9, 'Leg Press Machine', 'A strength training machine that targets the legs, allowing for controlled leg presses.', 8500.00, '../product_img/9.jpg', '2024-12-14 15:44:11', 99, 2),
+(10, ' Standard Barbell', 'A straight, solid metal bar used for basic weightlifting exercises like squats, bench presses, and deadlifts. ', 1500.00, '../product_img/10.jpg', '2024-12-14 15:11:18', 96, 2),
+(24, 'Jump Rope', 'For Rope Jumping. Very Good. Very nice', 50.00, '../product_img/11.png', '2024-12-14 02:21:20', 100, 2),
+(25, 'Resistance Band', 'Good for yoga. Great Condition. Pati scoliosis mo kaya mapa straight', 50.00, '../product_img/12.png', '2024-12-14 02:21:20', 100, 2),
+(26, 'Resistance band', 'A variation of resistance band that can target chest and back more specifically ', 100.00, '../product_img/13.png', '2024-12-14 02:21:20', 100, 2),
+(27, 'Yoga Mat', 'Mat for yoga obviously.', 150.00, '../product_img/14.png', '2024-12-14 08:49:50', 96, 2),
+(28, 'Earpods pro+', 'Apple earpods pro + with 1000 year waranty kahit patay kana pwede mo paring isauli samin.', 1000.00, '../product_img/15.png', '2024-12-14 02:21:21', 100, 1),
+(29, 'Watter Flask', 'Would you care for some Bo-oh of wo-oh', 200.00, '../product_img/16.png', '2024-12-14 02:21:21', 100, 2),
+(31, 'Metal Plates', 'Plates made of metal. ito itapon mo sa petepeve mo wag na yung yoga ball', 500.00, '../product_img/18.png', '2024-12-14 02:21:21', 100, 2),
+(32, 'Smart Watch', 'Mas smart pa sayo', 250.00, '../product_img/19.png', '2024-12-14 02:21:21', 100, 1),
+(33, 'Gym Shoes', 'Shoes for gym not for you', 1000.00, '../product_img/20.png', '2024-12-14 02:21:21', 100, 4);
 
 -- --------------------------------------------------------
 
@@ -161,18 +173,43 @@ INSERT INTO `items` (`item_id`, `item_name`, `item_desc`, `item_price`, `product
 --
 
 CREATE TABLE `orders` (
-  `order_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL,
-  `item_qty` int(11) NOT NULL,
-  `cus_id` int(11) NOT NULL,
-  `total_amount` decimal(10,2) NOT NULL,
-  `order_status` enum('pending','confirmed','shipped','completed','canceled') DEFAULT 'pending',
-  `payment_status` enum('pending','paid','failed') DEFAULT 'pending',
-  `address` varchar(255) NOT NULL,
-  `payment_method` varchar(50) NOT NULL,
-  `courier_service` varchar(50) NOT NULL,
-  `order_date` datetime DEFAULT current_timestamp()
+  `id` int(11) NOT NULL,
+  `name` varchar(55) NOT NULL,
+  `phone_number` varchar(11) NOT NULL,
+  `method` varchar(55) NOT NULL,
+  `courier` varchar(255) NOT NULL,
+  `province` varchar(255) NOT NULL,
+  `city` varchar(255) NOT NULL,
+  `barangay` varchar(255) NOT NULL,
+  `street` varchar(255) NOT NULL,
+  `total_products` varchar(255) NOT NULL,
+  `total_price` float(7,2) NOT NULL,
+  `order_status` int(11) NOT NULL DEFAULT 0,
+  `cancel_status` int(11) NOT NULL DEFAULT 0,
+  `payment_status` int(11) NOT NULL,
+  `tracking_number` varchar(20) DEFAULT NULL,
+  `user_id` int(11) NOT NULL,
+  `item_id` int(255) NOT NULL,
+  `order_date` date NOT NULL DEFAULT current_timestamp(),
+  `reference_number` varchar(255) NOT NULL,
+  `gcash_amount` float(7,2) NOT NULL,
+  `gcash_account_name` varchar(255) NOT NULL,
+  `gcash_account_number` varchar(20) NOT NULL,
+  `shipping_international` int(50) NOT NULL,
+  `island` enum('Luzon','Visayas','Mindanao') NOT NULL DEFAULT 'Luzon',
+  `quantity` decimal(7,2) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `orders`
+--
+
+INSERT INTO `orders` (`id`, `name`, `phone_number`, `method`, `courier`, `province`, `city`, `barangay`, `street`, `total_products`, `total_price`, `order_status`, `cancel_status`, `payment_status`, `tracking_number`, `user_id`, `item_id`, `order_date`, `reference_number`, `gcash_amount`, `gcash_account_name`, `gcash_account_number`, `shipping_international`, `island`, `quantity`, `date`) VALUES
+(35, 'Rod Rañola', '9515291629', 'cash on delivery', 'J&T Express', 'Albay', 'Tabaco City', 'san antonio', '663', ' Standard Barbell (1) , Cable Machine (1) ', 11095.00, 4, 0, 1, 'ON9IB77BWO', 24, 0, '2024-12-14', '', 0.00, '', '', 0, 'Luzon', 0.00, '2024-12-14 14:58:09'),
+(36, 'Rod Rañola', '9515291629', 'cash on delivery', 'J&T Express', 'Albay', 'Tabaco City', 'Matagbac', '663', 'Fitness Ball (1) ,  Standard Barbell (1) ', 1895.00, 4, 0, 1, 'YPGRPO9197', 24, 0, '2024-12-14', '', 0.00, '', '', 0, 'Luzon', 0.00, '2024-12-14 15:16:34'),
+(37, 'Rod Rañola', '9515291629', 'cash on delivery', 'J&T Express', 'Albay', 'Tabaco City', 'san antonio', '663', 'Leg Press Machine (1) ', 8595.00, 4, 0, 1, 'FD9FSAEGJA', 24, 0, '2024-12-14', '', 0.00, '', '', 0, 'Luzon', 0.00, '2024-12-14 15:44:49'),
+(38, 'Rod Rañola', '9515291629', 'cash on delivery', 'J&T Express', 'Albay', 'Tabaco City', 'san antonio', '663', 'Kettlebells (1) ', 1095.00, 1, 0, 0, 'XVHX95H83O', 24, 0, '2024-12-14', '', 0.00, '', '', 0, 'Luzon', 0.00, '2024-12-14 15:47:04');
 
 -- --------------------------------------------------------
 
@@ -214,8 +251,7 @@ INSERT INTO `trainer` (`trainer_id`, `trainer_name`, `trainer_info`, `trainer_ra
 (7, 'Saitama ', 'Sunday (Full-Day Special)\r\n\r\nSaitama’s basic yet effective routine is perfect for those who want a simple, consistent workout plan.', 9999.00, '../trainer_img/saitama.png'),
 (8, 'Mahoraga ', 'Monday, Wednesday, Friday (Morning)\r\nMahoraga’s training focuses on adaptability and resilience. Expect dynamic workouts that evolve to match your growth, challenging both your body and mind.', 75.00, '../trainer_img/mahoraga.png'),
 (9, 'Roronoa Zoro ', 'Monday, Wednesday, Friday (Evening)\r\n\r\nZoro’s intense training combines strength, stamina,  Perfect for those looking to build muscle while sharpening mental focus and discipline.', 5.00, '../trainer_img/zoro.png'),
-(10, 'Gorlack the Destroyer', 'Gorlack\'s training sessions are all about raw, primal power. Expect grueling strength workouts that will push your body to its limits, focusing on building massive muscle and unstoppable force.', 50.00, '../trainer_img/gorlock.png'),
-(11, 'Jojo', 'The ehd', 34.00, '../trainer_img/banna cake.jpg');
+(10, 'Gorlack the Destroyer', 'Gorlack\'s training sessions are all about raw, primal power. Expect grueling strength workouts that will push your body to its limits, focusing on building massive muscle and unstoppable force.', 50.00, '../trainer_img/gorlock.png');
 
 -- --------------------------------------------------------
 
@@ -238,8 +274,12 @@ CREATE TABLE `user_account` (
 
 INSERT INTO `user_account` (`ua_id`, `username`, `password`, `email`, `reset_token`, `user_priv`) VALUES
 (22, 'cj1', '$2y$10$HtlfUKDFt5vmqHmNEirPEuhAOu6FYD/5w97RuqKPNHxyKFGaFJl3W', 'regrowth1521@gmail.com', NULL, 'a'),
-(23, 'ch', '$2y$10$Yg4nf2DvMHAbz8WIp1KHWOYeZo3YGY1iyQs77L1.UOzpy4kUxzC1G', 'charlsbarquin2@gmail.com', NULL, 'u'),
-(24, 'StonedPhilosopher', '$2y$10$ooqtnmVKJyC2jCF0CJLsOuu.2Xi8b3Z/Q9nr9etaPIB//XA31uRz2', 'ranolarod2@gmail.com', NULL, 'u');
+(23, 'ch', '$2y$10$KDWgcZ2zl0U1rXWkKQGQXeOHWbvXOh60gGaQwZrSOcxHlpavyM6NS', 'charlsbarquin2@gmail.com', NULL, 'u'),
+(24, 'StonedPhilosopher', '$2y$10$FkNhc41KmOHtYg2YX21pKeVUvhux6t8STSkOGvyggOvbzbzWN2OPC', 'ranolarod2@gmail.com', NULL, 'u'),
+(25, 'ddd', '$2y$10$LGxD.3uFfUAVF4CnBHs6SOvnCIx4l3c2bharPCtaIkxky.zeOsIze', 'dddd@gmail.com', NULL, 'u'),
+(26, 'aaa', '$2y$10$ZdB7BNMXi.GCVjUZLauqjO9BWfFIPakGTejApoGsfEgBG.0yZNH96', 'aaa@gmail.com', NULL, 'u'),
+(27, 'Charls', '$2y$10$WcO2vYSTl8r0GNoKO.v/MuB1SVBEl7RaxJZf8t3F9M.FFh9XXqeJ.', 'vinceandrod@gmail.com', NULL, 'u'),
+(28, 'sample', '$2y$10$Ge8EjkmeiqfoKXd6aS630eLN45WOyZ5p5p09qvWIprmJVuLYcLEOe', 'jkdjkfdffdf@gmail.com', NULL, 'u');
 
 --
 -- Indexes for dumped tables
@@ -249,7 +289,7 @@ INSERT INTO `user_account` (`ua_id`, `username`, `password`, `email`, `reset_tok
 -- Indexes for table `cart`
 --
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`cart_id`),
+  ADD PRIMARY KEY (`id`),
   ADD KEY `item_id` (`item_id`);
 
 --
@@ -289,7 +329,7 @@ ALTER TABLE `items`
 -- Indexes for table `orders`
 --
 ALTER TABLE `orders`
-  ADD PRIMARY KEY (`order_id`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `rent`
@@ -322,7 +362,7 @@ ALTER TABLE `user_account`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cart_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=115;
 
 --
 -- AUTO_INCREMENT for table `customer_contact_info`
@@ -334,19 +374,19 @@ ALTER TABLE `customer_contact_info`
 -- AUTO_INCREMENT for table `customer_profile`
 --
 ALTER TABLE `customer_profile`
-  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `cus_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `items`
 --
 ALTER TABLE `items`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=55;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT for table `rent`
@@ -358,23 +398,17 @@ ALTER TABLE `rent`
 -- AUTO_INCREMENT for table `trainer`
 --
 ALTER TABLE `trainer`
-  MODIFY `trainer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `trainer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `user_account`
 --
 ALTER TABLE `user_account`
-  MODIFY `ua_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `ua_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
 --
-
---
--- Constraints for table `cart`
---
-ALTER TABLE `cart`
-  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`item_id`) REFERENCES `items` (`item_id`);
 
 --
 -- Constraints for table `customer_contact_info`
