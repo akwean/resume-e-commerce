@@ -1,0 +1,1271 @@
+/* General Reset */
+body,
+html,
+ul,
+li,
+h1,
+input {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa; /* Light background for better contrast */
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h5 {
+  font-weight: 600;
+  color: #333;
+}
+
+p {
+  color: #555;
+  line-height: 1.6;
+}
+
+/* Navbar Styling */
+.navbar {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-bottom: 1px solid #ddd;
+  padding: 10px 40px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* First Level */
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Ensure the navbar spans the entire width */
+  border-bottom: 1px solid #ddd;
+  padding: 20px 0; /* Adjust padding to center content vertically */
+  font-size: 18px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-img {
+  height: 40px;
+  width: auto;
+  opacity: 0;
+  animation: fadeInIcon 0.6s forwards 0.2s;
+}
+
+.logo-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+  opacity: 0;
+  animation: fadeInText 0.6s forwards 0.4s;
+  font-family: "Poppins", sans-serif; /* Apply Poppins font to logo text */
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 20px;
+}
+
+.nav-links li {
+  margin: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+  opacity: 0;
+  animation: fadeInText 0.6s forwards 0.6s;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+  opacity: 0;
+  animation: fadeInText 0.6s forwards 0.6s;
+  font-family: "Poppins", sans-serif;
+}
+
+.nav-links li a:hover {
+  color: #e63946;
+}
+
+.nav-links a:hover {
+  color: #ff5733;
+  transform: scale(1.05);
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+  color: #ff5733;
+  transform: scale(1.05);
+  letter-spacing: 1px;
+}
+
+.nav-links a i {
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover i {
+  transform: translateX(5px);
+}
+
+/* Second Level */
+.navbar-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  width: 100%;
+  opacity: 0;
+  animation: slideUp 0.6s forwards 0.3s;
+}
+
+/* Dropdown Menu */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  font-family: "Poppins", sans-serif; /* Apply Poppins font to dropdown menu */
+}
+
+.menu-icon:hover {
+  color: #ff5733;
+}
+
+.menu-icon i {
+  font-size: 20px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.menu-icon:hover i {
+  transform: rotate(20deg);
+}
+
+/* Dropdown Content Animations */
+.dropdown-content {
+  display: block;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  z-index: 1050; /* High z-index for dropdown */
+  padding: 8px 15px;
+  text-decoration: none;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  transition: background-color 0.3s;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+  font-family: "Poppins", sans-serif; /* Apply Poppins font to dropdown links */
+}
+
+.dropdown-content a:hover {
+  background-color: #e63946;
+  color: #fff;
+}
+
+/* Hover Effects for User and Cart Icons */
+.user-cart-icons {
+  display: flex;
+  gap: 15px;
+  margin: 0 15px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.user-cart-icons i {
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.user-cart-icons i:hover {
+  color: #e63946;
+  transform: scale(1.2);
+}
+
+.cart-icon {
+  position: relative;
+}
+
+.cart-icon i {
+  transition: transform 0.3s ease;
+}
+
+.cart-icon i:hover {
+  transform: rotate(10deg);
+}
+
+.cart-badge {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff4d4d;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 2px 6px;
+  opacity: 0;
+  animation: fadeIn 0.6s forwards 0.5s;
+}
+
+/* Search Bar Styling */
+.search-bar {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 8px 15px;
+  font-family: "Poppins", sans-serif;
+  border-radius: 20px;
+}
+
+.search-bar button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #555;
+}
+
+.search-bar button:hover {
+  color: #ff5733;
+}
+
+.search-bar button i {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInText {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInIcon {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+  color: #ff5733;
+  transform: scale(1.05);
+  letter-spacing: 1px;
+}
+
+.nav-links a:hover {
+  color: #ff5733;
+  transform: scale(1.05);
+  letter-spacing: 1px;
+}
+
+.navbar,
+.dropdown {
+  position: relative;
+  overflow: visible; /* Ensure dropdown isn't clipped */
+  z-index: 1000;
+}
+
+@keyframes spinIcon {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cart-icon i:hover {
+  animation: spinIcon 1s ease-in-out;
+}
+
+/* Underline Animation: Slide-in from the bottom */
+.navbar-right a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 2px;
+  background-color: #ffe6e6;
+  transition: width 0.3s ease-out;
+}
+
+.navbar-right a:hover::after {
+  width: 100%;
+}
+
+.navbar-right a:hover::after {
+  width: 100%; /* Underline expands to full width on hover */
+}
+
+.btn-danger {
+  background: linear-gradient(135deg, #ff6666, #ff4d4d);
+  border: none;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-danger:hover {
+  background: linear-gradient(135deg, #ff4d4d, #ff8080);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(255, 77, 77, 0.5);
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Section Title */
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+/* Card Customization */
+.card {
+  border: none;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  height: 200px;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Featured Products Container */
+.container {
+  margin-top: 60px;
+  margin-bottom: 50px;
+}
+
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+/* Enhanced Carousel Styles */
+.carousel-inner {
+  background-color: #efefef;
+  font-family: "Poppins", sans-serif;
+  margin-top: -50px;
+  position: relative;
+  padding: 20px 0;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.carousel-item {
+  background-image: linear-gradient(
+    to right,
+    rgba(255, 77, 77, 0.5),
+    rgba(255, 255, 255, 0.5)
+  );
+  background-size: 100% 300px;
+  background-position: 0% 100%;
+  transition: background-position 0.5s ease-out;
+}
+
+.carousel-item.active {
+  background-position: 0% 0%;
+}
+
+.carousel-inner .text-content {
+  animation: fadeInUp 1.5s ease-out, slideUp 1.2s ease-out;
+  animation-fill-mode: both; /* Make the animation more smooth */
+}
+
+.carousel-inner .title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #e63946;
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif;
+}
+
+.carousel-inner .description {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #333;
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  margin-top: 15px;
+}
+
+.carousel-inner .d-info {
+  font-size: 1.1rem;
+  font-weight: 300;
+  line-height: 1.6;
+  color: #555;
+  transition: transform 0.3s ease, opacity 0.5s ease;
+  margin-top: 20px;
+}
+
+.carousel-inner .s-image {
+  padding: 15px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  margin-right: 5px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 15px;
+}
+
+.carousel-inner .s-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  width: 40px; /* Adjust size */
+  height: 40px; /* Adjust size */
+  background-color: transparent; /* Remove solid background */
+  border-radius: 50%; /* Circular shape */
+  display: none !important; /* Completely hides the controls */
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+  z-index: 1050;
+  left: 15px; /* Adjust positioning */
+}
+
+.carousel-control-prev i,
+.carousel-control-next i {
+  font-size: 24px; /* Font Awesome icon size */
+  color: #e63946; /* Modern color */
+  transition: transform 0.3s ease, color 0.3s ease;
+  right: 15px; /* Adjust positioning */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: none; /* Remove default arrow icons */
+}
+
+/* Removed hover effect for arrows */
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Remove hover change */
+/* Hover effect */
+.carousel-control-prev:hover,
+.carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.2); /* Light background on hover */
+  transform: scale(1.1); /* Slight scaling effect */
+}
+
+.carousel-control-prev i:hover,
+.carousel-control-next i:hover {
+  color: #ff5733; /* Highlight color */
+  transform: scale(1.1); /* Slight scaling effect for icon */
+}
+
+/* Button Styling */
+.carousel-inner .btn-danger {
+  background: linear-gradient(135deg, #ff4d4d, #ff8080);
+  border-radius: 30px;
+  padding: 15px 30px;
+  font-weight: bold;
+  font-size: 18px;
+  transition: background 0.3s ease, transform 0.3s ease;
+  margin-top: 30px;
+}
+
+.carousel-inner .btn-danger:hover {
+  background: linear-gradient(135deg, #ff4d4d, #ff8080);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(255, 77, 77, 0.5);
+}
+
+.carousel-inner .btn-danger:focus {
+  box-shadow: 0 0 5px rgba(255, 87, 51, 0.3);
+}
+
+/* Text Animation */
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth fade and transform effects for text */
+.carousel-inner .title,
+.carousel-inner .description,
+.carousel-inner .d-info {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeInUp 1.5s forwards;
+}
+
+.carousel-inner .title {
+  animation-delay: 0.3s;
+}
+
+.carousel-inner .description {
+  animation-delay: 0.5s;
+}
+
+.carousel-inner .d-info {
+  animation-delay: 0.7s;
+}
+
+.carousel-inner .btn-danger {
+  animation: fadeInUp 1.5s ease 1.2s forwards;
+}
+
+/* Refined Carousel Image Transition */
+.carousel-item-next,
+.carousel-item-prev,
+.carousel-item.active {
+  transition: transform 1s ease-in-out, opacity 1s ease;
+}
+
+/* Button inside carousel - Spacing */
+.carousel-inner .btn-danger {
+  margin-top: 30px; /* Add more spacing between button and text */
+}
+
+/* Text Shadow for Better Visibility */
+.carousel-inner .title,
+.carousel-inner .description {
+  text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2);
+}
+
+.product-container {
+  width: 100%;
+  height: 400px; /* adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-container img {
+  width: 100%;
+  height: 200px; /* adjust the height as needed */
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+.small-container {
+  text-align: center;
+}
+
+.small-container img {
+  margin: 0 auto;
+}
+
+/* General Container Styling */
+.featured-products,
+.latest-products {
+  font-family: "Poppins", sans-serif;
+  padding: 60px 20px;
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 40px;
+}
+
+.featured-products .row,
+.latest-products .row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px; /* Controls the spacing between the items */
+  justify-content: space-between;
+}
+
+/* Adjust column width for 4 items per row */
+.featured-products .col-3,
+.latest-products .col-3 {
+  flex: 1 0 calc(25% - 15px); /* Each card takes up 1/4 of the row minus gap */
+  margin-bottom: 15px; /* Adds space between rows */
+}
+
+/* Section Titles */
+.featured-products h2,
+.latest-products h2 {
+  font-size: 2rem; /* Adjusted to a smaller, more balanced size */
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-bottom: 50px; /* Reduced space below title */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  position: relative;
+}
+
+.featured-products h2::after,
+.latest-products h2::after {
+  content: "";
+  width: 60px;
+  height: 4px;
+  background: linear-gradient(135deg, #e63946, #ff4d4d); /* Red underline */
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.toast-container {
+  z-index: 9999;
+}
+
+.toast {
+  opacity: 0.9;
+}
+
+.toast:hover {
+  opacity: 1;
+}
+
+.toast .toast-body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+}
+
+
+/* Product Image Adjustments */
+.featured-products img,
+.latest-products img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+/* Product Card Styling */
+.product-card {
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  margin: 0;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Product Name */
+.product-name {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #333;
+  margin: 10px 0 5px;
+}
+
+/* Rating */
+.rating {
+  font-size: 1rem;
+  color: #ffc107;
+  margin-bottom: 10px;
+}
+
+/* Price */
+.price {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #e63946;
+  margin-bottom: 15px;
+}
+
+/* Button */
+.product-card .btn {
+  background: linear-gradient(135deg, #e63946, #ff4d4d);
+  border: none;
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: bold;
+  padding: 8px 16px;
+  border-radius: 25px;
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card .btn:hover {
+  background: linear-gradient(135deg, #ff4d4d, #ff8080);
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(255, 77, 77, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .featured-products .col-3,
+  .latest-products .col-3 {
+    flex: 1 0 calc(33.33% - 15px); /* 3 items per row on smaller screens like tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .featured-products .col-3,
+  .latest-products .col-3 {
+    flex: 1 0 calc(50% - 15px); /* 2 items per row on medium screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .featured-products .col-3,
+  .latest-products .col-3 {
+    flex: 1 0 100%; /* Stacks the cards in a single column on small screens */
+  }
+
+  .product-card {
+    padding: 10px;
+  }
+
+  .product-name {
+    font-size: 0.9rem;
+  }
+
+  .price {
+    font-size: 0.9rem;
+  }
+}
+
+/* Move the carousel upwards using relative positioning */
+.carousel {
+  position: relative;
+  top: -10px; /* Adjust this value as needed */
+}
+
+/* Custom Carousel Styles for #discountCarousel */
+#discountCarousel {
+  margin-top: -20px; /* Adjust the margin to move the carousel upwards */
+  border-radius: 10px; /* Optional: add rounded corners */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Optional: add shadow for a 3D effect */
+}
+
+#discountCarousel .carousel-inner {
+  border-radius: 10px; /* Optional: rounded corners for the carousel */
+  overflow: hidden; /* Ensures no overflow beyond the borders */
+}
+
+#discountCarousel .carousel-control-prev,
+#discountCarousel .carousel-control-next {
+  color: #e63946; /* Change color of the control icons */
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.5
+  ); /* Add background color to the controls */
+  border-radius: 50%; /* Rounded control buttons */
+  transition: background-color 0.3s ease; /* Smooth transition on hover */
+}
+
+#discountCarousel .carousel-control-prev:hover,
+#discountCarousel .carousel-control-next:hover {
+  background-color: rgba(0, 0, 0, 0.8); /* Darken the background on hover */
+}
+
+/* Custom style for the carousel images */
+#discountCarousel .s-image {
+  max-height: 400px; /* Control the height of images */
+  object-fit: cover; /* Ensure images fit the container nicely */
+  border-radius: 8px; /* Rounded corners for the images */
+}
+
+/* Custom text styles */
+#discountCarousel .text-content {
+  max-width: 50%; /* Restrict text width for better alignment */
+}
+
+#discountCarousel .title {
+  font-size: 2.5rem; /* Adjust the title font size */
+  font-weight: bold;
+}
+
+#discountCarousel .description {
+  font-size: 1.2rem; /* Adjust the description font size */
+  line-height: 1.5;
+}
+
+/* Footer Styling */
+footer.footer {
+  background: linear-gradient(
+    135deg,
+    #2f3b45,
+    #343a40
+  ); /* Dark gym-themed gradient */
+  color: #fff; /* White text */
+  font-family: "Poppins", sans-serif; /* Consistent with your website font */
+  padding-top: 30px; /* Adjust top padding for more height */
+  padding-bottom: 30px; /* Adjust bottom padding for more height */
+  margin-top: 60px; /* Adds space above the footer */
+  border-top: 1px solid #444; /* Subtle border to separate footer */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center all content horizontally */
+  text-align: center; /* Center text inside the footer */
+  box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.3); /* Soft shadow for depth */
+  min-height: 250px; /* Set a minimum height */
+  height: 400px; /* Ensure footer height adjusts to content */
+  transition: all 0.3s ease; /* Smooth transition for hover effects */
+}
+
+/* Footer Section Titles */
+footer .footer-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ff6f61; /* Accent color for titles (GymFit color) */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for title */
+}
+
+footer .footer-title:hover {
+  color: #ffd700; /* Gold accent on hover */
+  transform: translateY(-5px); /* Slight lift effect */
+}
+
+/* Footer Text and Paragraph */
+footer p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #ccc; /* Light grey text for better readability */
+  margin-bottom: 20px; /* Ensure paragraph spacing */
+  max-width: 350px;
+  margin: 0 auto; /* Center the paragraph */
+  transition: color 0.3s ease;
+}
+
+footer p:hover {
+  color: #ff6f61; /* Change text color to GymFit accent color on hover */
+}
+
+/* Footer Links */
+footer .footer-link {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease, transform 0.3s ease, letter-spacing 0.3s ease;
+}
+
+footer .footer-link:hover {
+  color: #ff6f61; /* Accent color on hover */
+  transform: translateX(5px); /* Small horizontal movement on hover */
+  letter-spacing: 1px; /* Slight expansion of text */
+}
+
+/* Social Media Icons */
+footer .social-icon {
+  font-size: 30px;
+  color: #fff;
+  transition: transform 0.3s ease, color 0.3s ease;
+  margin-right: 20px; /* Spacing between icons */
+}
+
+footer .social-icon:hover {
+  color: #ff6f61; /* Accent color on hover */
+  transform: scale(1.2); /* Slightly enlarge icon on hover */
+  cursor: pointer;
+}
+
+/* Footer Column Spacing */
+footer .col-md-4 {
+  margin-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Center the content in each column */
+  text-align: center; /* Ensure content is centered */
+  animation: fadeIn 0.5s ease-in-out; /* Add fade-in animation to columns */
+}
+
+/* Footer Content Centering */
+footer .row {
+  display: flex;
+  justify-content: center; /* Center all columns horizontally */
+  align-items: center; /* Align the content vertically */
+  flex-wrap: wrap; /* Wrap columns on small screens */
+  width: 100%;
+}
+
+footer .col-md-4 {
+  flex: 1 1 30%; /* Allow columns to take up 30% of the row */
+  padding: 0 15px;
+  text-align: center; /* Ensure text is centered inside the columns */
+}
+
+/* Hover effect for footer section */
+footer.footer:hover {
+  background: linear-gradient(
+    135deg,
+    #3a4b56,
+    #2f3b45
+  ); /* Darker gradient on hover */
+  box-shadow: 0px -10px 20px rgba(0, 0, 0, 0.5); /* Darker shadow on hover */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 767px) {
+  footer .col-md-4 {
+    text-align: center; /* Center-align for mobile */
+    margin-bottom: 20px;
+    flex: 1 1 100%; /* Full width on mobile */
+  }
+
+  footer .list-unstyled {
+    padding-left: 0;
+    margin-bottom: 20px;
+  }
+
+  footer .social-icon {
+    font-size: 36px; /* Larger icons on mobile */
+    margin-right: 15px;
+  }
+}
+
+/* Copyright Section */
+footer .text-center p {
+  font-size: 1rem;
+  margin-top: 30px;
+  opacity: 0.7;
+  color: #ccc; /* Lighter color for copyright text */
+}
+
+/* Seperate */
+
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Product Page */
+.product-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f54d42;
+}
+
+.product-details h5 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  color: #555;
+}
+
+/* Buttons */
+.btn-add-to-cart,
+.btn-buy-now {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-add-to-cart {
+  background-color: #f54d42;
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #d94339;
+}
+
+.btn-buy-now {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-buy-now:hover {
+  background-color: #444;
+}
+
+/* Shared Button Style */
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn-danger {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker Red */
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-page {
+    padding: 20px;
+  }
+
+  .product-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+  }
+}
+
+.btn-add-to-cart {
+  background-color: #f54d42; /* Red */
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #d94339; /* Darker red */
+  transform: scale(1.05); /* Added scaling on hover */
+}
+
+.btn-buy-now {
+  background-color: #333; /* Dark color */
+  color: #fff;
+}
+
+.btn-buy-now:hover {
+  background-color: #444; /* Slightly lighter dark shade */
+  transform: scale(1.05); /* Added scaling on hover */
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker Red */
+  color: #fff;
+  transform: scale(1.05); /* Scale effect */
+}
+
+.text-center {
+  text-align: center;
+}

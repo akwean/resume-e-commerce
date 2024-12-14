@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #f8f9fa;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Product Page */
+.product-page {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.product-title {
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.product-price {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #f54d42;
+}
+
+.product-details h5 {
+  font-size: 1.5rem;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.product-details p {
+  color: #555;
+}
+
+/* Buttons */
+.btn-add-to-cart,
+.btn-buy-now {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  transition: 0.3s ease-in-out;
+}
+
+.btn-add-to-cart {
+  background-color: #f54d42;
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #d94339;
+}
+
+.btn-buy-now {
+  background-color: #333;
+  color: #fff;
+}
+
+.btn-buy-now:hover {
+  background-color: #444;
+}
+
+/* Shared Button Style */
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+/* Primary Button */
+.btn-danger {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker Red */
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .product-page {
+    padding: 20px;
+  }
+
+  .product-title {
+    font-size: 2rem;
+  }
+
+  .product-price {
+    font-size: 1.5rem;
+  }
+}
+
+.btn-add-to-cart {
+  background-color: #f54d42; /* Red */
+  color: #fff;
+}
+
+.btn-add-to-cart:hover {
+  background-color: #d94339; /* Darker red */
+  transform: scale(1.05); /* Added scaling on hover */
+}
+
+.btn-buy-now {
+  background-color: #333; /* Dark color */
+  color: #fff;
+}
+
+.btn-buy-now:hover {
+  background-color: #444; /* Slightly lighter dark shade */
+  transform: scale(1.05); /* Added scaling on hover */
+}
+
+.btn {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  transition: all 0.3s ease-in-out;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+
+.btn-danger {
+  background-color: #dc3545; /* Red */
+  color: #fff;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Darker Red */
+  color: #fff;
+  transform: scale(1.05); /* Scale effect */
+}
+
+.text-center {
+  text-align: center;
+}

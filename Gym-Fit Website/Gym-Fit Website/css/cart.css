@@ -1,0 +1,271 @@
+/* General Cart Section Styling */
+.cart-section {
+  font-family: "Poppins", sans-serif;
+  padding: 30px;
+  background-color: #f9f9f9; /* Light background for contrast */
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Table Styling */
+.cart-table {
+  background-color: #fff; /* White background for table */
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+  margin-bottom: 30px;
+}
+
+.cart-table thead {
+  background-color: #ff4d4d; /* GymFit's red */
+  color: #ffffff; /* White text */
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.cart-table th {
+  padding: 15px;
+}
+
+.cart-table tbody tr:nth-child(odd) {
+  background-color: #ffe6e6; /* Light red for alternating rows */
+}
+
+.cart-table tbody tr:nth-child(even) {
+  background-color: #ffffff; /* White for alternating rows */
+}
+
+.cart-table tbody tr:hover {
+  background-color: #ffd6d6; /* Slightly darker red on hover */
+  transition: background-color 0.3s ease;
+}
+
+.cart-table td {
+  padding: 15px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.cart-table td:first-child {
+  text-align: left;
+}
+
+/* Product Information */
+.cart-table img {
+  width: 80px;
+  height: auto;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.cart-table h6 {
+  font-size: 16px;
+  color: #333;
+  margin: 0;
+}
+
+.cart-table small {
+  color: #777;
+  font-size: 14px;
+}
+
+/* Quantity Input */
+.quantity-input {
+  width: 60px;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+/* Subtotal Column */
+.subtotal {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Remove Button */
+.remove-link {
+  background-color: #ff4d4d; /* GymFit red */
+  color: #fff;
+  border: none;
+  padding: 5px 12px;
+  border-radius: 5px;
+  font-size: 14px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.remove-link:hover {
+  background-color: #cc0000; /* Darker red */
+  transform: scale(1.05); /* Slight enlarge effect */
+}
+
+/* Summary Section */
+.text-end {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+.text-end p {
+  font-size: 16px;
+  color: #333;
+  margin: 5px 0;
+}
+
+.text-end span {
+  font-weight: bold;
+  color: #ff4d4d; /* Highlight GymFit red */
+}
+
+/* Proceed Button */
+.proceed-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3); /* Button shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.proceed-btn:hover {
+  background-color: #cc0000;
+  transform: scale(1.05); /* Slight enlarge effect */
+}
+
+/* Cart Badge (optional for the cart icon) */
+.cart-badge {
+  background-color: #ff4d4d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 5px 8px;
+  position: relative;
+  top: -10px;
+  left: -5px;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .cart-table img {
+    width: 60px; /* Smaller images for smaller screens */
+  }
+
+  .cart-table h6 {
+    font-size: 14px;
+  }
+
+  .cart-table small {
+    font-size: 12px;
+  }
+
+  .quantity-input {
+    width: 50px;
+  }
+
+  .text-end p {
+    font-size: 14px;
+  }
+
+  .proceed-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.cart-badge {
+  background-color: #ff4d4d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 5px 8px;
+  position: relative;
+  top: -10px;
+  left: -5px;
+  animation: bounce 0.5s ease;
+}
+
+.cart-badge.hidden {
+  display: none;
+}
+
+.proceed-btn {
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255, 77, 77, 0.3); /* Button shadow */
+  transition: background-color 0.3s ease, transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.proceed-btn:hover {
+  background-color: #cc0000;
+  transform: scale(1.05); /* Slight enlarge effect */
+  box-shadow: 0 6px 12px rgba(255, 77, 77, 0.4); /* Stronger shadow */
+}
+
+/* Extra small screens (mobile portrait) */
+@media (max-width: 480px) {
+  .cart-table img {
+    width: 50px; /* Smaller images for very small screens */
+  }
+
+  .cart-table h6 {
+    font-size: 12px;
+  }
+
+  .cart-table small {
+    font-size: 10px;
+  }
+
+  .quantity-input {
+    width: 40px;
+  }
+
+  .text-end p {
+    font-size: 14px;
+  }
+
+  .proceed-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+}
+
+.cart-table tbody tr:hover {
+  background-color: #ffd6d6; /* Slightly darker red on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  transform: scale(1.02); /* Slight scale effect on hover */
+}
+
+.cart-table td,
+.cart-table th {
+  transition: all 0.3s ease;
+}
