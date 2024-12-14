@@ -12,17 +12,7 @@ include 'admin_navbar.php';
 
 $manage_product_message = "";
 
-// Delete Product Logic
-if (isset($_GET['delete_id'])) {
-    $delete_id = $_GET['delete_id'];
-    $sql_delete = "DELETE FROM items WHERE item_id = $delete_id";
 
-    if ($conn->query($sql_delete) === TRUE) {
-        $manage_product_message = "Product deleted successfully.";
-    } else {
-        $manage_product_message = "Error deleting product: " . $conn->error;
-    }
-}
 
 // Update Product Logic
 if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_product'])) {
@@ -127,7 +117,7 @@ $result = $conn->query($sql);
                                 <td><img src='" . $row['product_image'] . "' alt='Product Image' width='100'></td>
                                 <td>
                                     <a href='#' data-bs-toggle='modal' data-bs-target='#editProductModal' data-id='" . $row['item_id'] . "' class='btn btn-warning btn-sm edit-product-btn'>Edit</a>
-                                    <a href='?delete_id=" . $row['item_id'] . "' class='btn btn-danger btn-sm'>Delete</a>
+                        
                                 </td>
                             </tr>";
                     }
