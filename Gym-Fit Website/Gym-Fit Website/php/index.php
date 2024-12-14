@@ -128,9 +128,9 @@ $latest_products = $conn->query($sql_latest);
           <img src="<?php echo $row["product_image"];?>" alt="<?php echo $row["item_name"];?>" class="product-img" />
           <h4 class="product-name"><?php echo $row["item_name"];?></h4>
           <p class="price">₱<?php echo $row["item_price"];?></p>
-          <button type="submit" class="btn btn-add-to-cart flex-grow-1" name="add_to_cart" >
-            <i class="fas fa-shopping-cart"></i> Add to Cart
-          </button>
+          <a class="btn add-to-cart" href="shop.php">
+               <i class="fa fa-eye"></i> Shop Now
+          </a>
         </div>
       </form>
       </div>

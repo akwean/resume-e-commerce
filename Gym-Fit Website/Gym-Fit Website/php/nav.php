@@ -29,8 +29,9 @@ require_once 'connection.php';
       rel="stylesheet"
     />
 
-  
-
+    <!--For see more/view more (seemore.php)
+    <link rel="stylesheet" href="../css/seemore.css" />
+-->
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -65,12 +66,10 @@ require_once 'connection.php';
 <?php }?>
 </div>
         </div>
-        <form action="shop.php" method="GET" class="search-bar">
-  <input type="text" name="search" placeholder="Search Products" />
-  <button type="submit">
-    <i class="fas fa-search"></i>
-  </button>
-</form>
+        <div class="search-bar">
+          <input type="text" placeholder="Search Products" />
+          <i class="fas fa-search"></i>
+        </div>
         <div class="user-cart-icons">
         <div class="dropdown">
   <i class="fas fa-user dropdown-toggle" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false"></i>
@@ -79,7 +78,7 @@ require_once 'connection.php';
       <li><a class="dropdown-item" href="../sign-in_sign-up/logout.php">Log Out</a></li>
     <?php else: ?>
       <li><a class="dropdown-item" href="../sign-in_sign-up/login.php">Login</a></li>
-      <li><a class="dropdown-item" href="../sign-in_sign-up/register.php">Sign Up</a></li>
+      <li><a class="dropdown-item" href="../sign-in_sign-up/signup.php">Sign Up</a></li>
     <?php endif; ?>
   </ul>
 </div>
@@ -92,7 +91,7 @@ require_once 'connection.php';
         $select_rows = mysqli_query($conn, "SELECT * FROM `cart` WHERE user_id = '$user_id'") or die('query failed');
         $row_count = mysqli_num_rows($select_rows);
     } else {
-        echo "You are not logged in";
+        echo "Login first!😸";
     }
 ?>
 
