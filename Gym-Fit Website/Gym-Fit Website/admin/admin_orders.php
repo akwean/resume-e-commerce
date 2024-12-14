@@ -155,34 +155,36 @@ include "admin_navbar.php";
                             echo "<td>{$row['total_products']}</td>";
                             echo "<td>{$row['total_price']}</td>";
                             echo "<td>{$order_status_name}</td>";
-                            echo "<td>{$payment_status_name}</td>"; 
-                            echo "<td>{$row['reference_number']}</td>";
-                            echo "<td>{$row['order_date']}</td>";
-                            echo "<td>
-                                    <form method='post'>
-                                        <input type='hidden' name='order_id' value='{$row['id']}'>";
-                            echo "<div class='action-buttons'>";
-                            if ($order_status == 1) {
-                                echo "<button type='submit' name='deliver_order' class='btn btn-success btn-oval order-actions deliver'>Out for Delivery</button>
-                                      <button type='submit' name='cancel_order' class='btn btn-danger btn-oval order-actions cancel'>Cancel</button>";
-                            }
-                            if ($order_status == 2) {
-                                echo "<button type='submit' name='received_order' class='btn btn-success btn-oval order-actions received'>Received</button>";
-                            }
-                            echo "</div>
-                                    </form>
-                                </td>";
-                            // Confirm Payment Button
-                            echo "<td>";
-                            if ($row['payment_status'] == 0 && $order_status != 0) {
-                                echo "<form method='post'>
-                                        <input type='hidden' name='order_id' value='{$row['id']}'>
-                                        <button type='submit' name='confirm_payment' class='btn btn-primary btn-oval confirm-payment-btn'>Confirm Payment</button>
-                                      </form>";
-                            } else {
-                                echo "<button type='button' class='btn btn-secondary btn-oval confirm-payment-btn' disabled>Confirmed</button>";
-                            }
-                            echo "</td>";
+echo "<td>{$payment_status_name}</td>"; 
+echo "<td>{$row['reference_number']}</td>";
+echo "<td>{$row['order_date']}</td>";
+echo "<td>
+        <form method='post'>
+            <input type='hidden' name='order_id' value='{$row['id']}'>";
+echo "<div class='action-buttons'>";
+if ($order_status == 1) {
+    echo "<button type='submit' name='deliver_order' class='btn btn-success btn-oval order-actions deliver'>Out for Delivery</button>
+          <button type='submit' name='cancel_order' class='btn btn-danger btn-oval order-actions cancel'>Cancel</button>";
+}
+if ($order_status == 2) {
+    echo "<button type='submit' name='received_order' class='btn btn-success btn-oval order-actions received'>Received</button>";
+}
+echo "</div>
+        </form>
+    </td>";
+// Confirm Payment Button
+echo "<td>";
+if ($row['payment_status'] == 0 && $order_status != 0) {
+    echo "<form method='post'>
+            <input type='hidden' name='order_id' value='{$row['id']}'>
+            <button type='submit' name='confirm_payment' class='btn btn-primary btn-oval confirm-payment-btn'>Confirm Payment</button>
+          </form>";
+} elseif ($order_status == 0) {
+    echo "<button type='button' class='btn btn-secondary btn-oval confirm-payment-btn' disabled>Cancelled</button>";
+} else {
+    echo "<button type='button' class='btn btn-secondary btn-oval confirm-payment-btn' disabled>Confirmed</button>";
+}
+echo "</td>";
                         }
                     } else {
                         echo "<tr><td colspan='15'>No orders found.</td></tr>";
