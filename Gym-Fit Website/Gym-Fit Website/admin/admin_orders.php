@@ -9,6 +9,20 @@ if ($_SESSION['user_priv'] !== 'a') {
 
 // Function to update order status and payment status
 function updateOrderStatus($conn, $order_id, $status = null, $update_payment = false) {
+    // Check if the order is already canceled
+    $check_query = "SELECT order_status FROM orders WHERE id = ?";
+    $stmt = $conn->prepare($check_query);
+    $stmt->bind_param('i', $order_id);
+    $stmt->execute();
+    $stmt->bind_result($current_status);
+    $stmt->fetch();
+    $stmt->close();
+
+    if ($current_status == 0 && $update_payment) {
+        // If the order is canceled, do not update the payment status
+        return;
+    }
+
     $update_query = "UPDATE orders SET ";
     $params = [];
     $types = '';
@@ -92,17 +106,8 @@ include "admin_navbar.php";
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="../css/styles.css" />
     <link rel="stylesheet" href="../css/admin_order.css" />
-    <script>
-        function showActions(orderId) {
-            var actionButtons = document.getElementsByClassName('order-actions-' + orderId);
-            for (var i = 0; i < actionButtons.length; i++) {
-                actionButtons[i].style.display = 'inline-block';
-            }
-        }
-    </script>
 </head>
 <body>
-    
     <div class="container mt-5">
         <h2 class="mt-5">All orders</h2>
         <div class="table-container">
@@ -169,7 +174,7 @@ include "admin_navbar.php";
                                 </td>";
                             // Confirm Payment Button
                             echo "<td>";
-                            if ($row['payment_status'] == 0) {
+                            if ($row['payment_status'] == 0 && $order_status != 0) {
                                 echo "<form method='post'>
                                         <input type='hidden' name='order_id' value='{$row['id']}'>
                                         <button type='submit' name='confirm_payment' class='btn btn-primary btn-oval confirm-payment-btn'>Confirm Payment</button>
