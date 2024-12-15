@@ -85,7 +85,8 @@ include 'nav.php';
                             <th scope="col">Image</th>
                             <th scope="col">Name</th>
                             <th scope="col">Price</th>
-                            <th scope="col">Quantity</th>
+                            <th scope="col"></th>
+                            <!-- <th scope="col">Quantity</th> -->
                             <th scope="col">Total Price</th>
                             <th scope="col">Action</th>
                         </tr>
@@ -108,7 +109,8 @@ include 'nav.php';
                     <td><img src="../product_img/<?php echo htmlspecialchars($row['product_image']); ?>" height="100" alt=""></td>
                     <td><?php echo htmlspecialchars($row['item_name']); ?></td>
                     <td>Php<?php echo number_format($row['price'], 2); ?>/-</td>
-                    <td><?php echo $row['quantity']; ?></td>
+                    <td></td>
+                    <!-- <td><?php echo $row['quantity']; ?></td> -->
                     <td>Php<?php echo number_format($row['price'] * $row['quantity'], 2); ?>/-</td>
                     <td><a class="btn btn-danger mt-3" href="cart.php?remove=<?php echo $row['id']; ?>" onclick="return confirm('Remove item from cart?')"><i class="fas fa-trash"></i> Remove</a></td>
                 </tr>
